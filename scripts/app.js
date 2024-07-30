@@ -1,0 +1,57 @@
+/// Create a new Vue app
+const app = Vue.createApp({
+  /// Define the data for the app
+  data() {
+    return {
+      studentName: "Arda Kersü",
+      pressure: 50,
+      min: 0,
+      max: 100,
+      indicatorLevels: [
+        {
+          id: "danger-low",
+          status: "danger",
+          label: "Danger - Low !",
+          min: 0,
+          max: 10,
+        },
+        {
+          id: "warn-low",
+          status: "warn",
+          label: "Warning - Low !",
+          min: 11,
+          max: 30,
+        },
+        { id: "safe", status: "safe", label: "Safe", min: 31, max: 70 },
+        {
+          id: "warn-high",
+          status: "warn",
+          label: "Warning - High !",
+          min: 71,
+          max: 90,
+        },
+        {
+          id: "danger-high",
+          status: "danger",
+          label: "Danger - High !",
+          min: 91,
+          max: 100,
+        },
+      ],
+    };
+  },
+  /// Define the methods for the app
+  methods: {
+    isActive(level) {
+      console.log(level.min, level.max);
+      console.log(this.pressure);
+      if (this.pressure <= level.max && this.pressure >= level.min) {
+        return true;
+      }
+      return false;
+    },
+  },
+});
+
+/// Mount the app to the #app element
+app.mount("#app");
